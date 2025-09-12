@@ -6,11 +6,6 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-<<<<<<< HEAD
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-=======
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Danilo-Miguel/sdm-pla.git"
@@ -22,7 +17,6 @@
     "url": "https://github.com/Danilo-Miguel/sdm-pla/issues"
   },
   "homepage": "https://github.com/Danilo-Miguel/sdm-pla#readme",
->>>>>>> e4befa3cbc9a9b5c7c518ae5fb02429f2e710cf6
   "dependencies": {
     "express": "^5.1.0"
   }
