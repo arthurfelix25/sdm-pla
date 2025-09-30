@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href=".../css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logic Game</title>
+</head>
+<body>
+    <div class="container" role="main">
+        <h1>Logic Numbers</h1>
+        <p class="subtitle">Fill in the blanks</p>
+        <label>Numbers in the sequence: </label>
+        <input type="number" id="totaln" value="10" min="5" max="20">
+        <label>Blanks:</label>
+        <input type="number" id="totalb" value="3" min="1" max="10">
+
+        <div>
+            <button onclick="startGame()">Stark Game</button>
+            <button onclick="checkanswer()">Check Answer</button>
+        </div>
+
+        <div id="sequence" aria-live="polite" role="region" style="margin-top: 2rem;"></div>
+        <div id="result" role="alert" aria-live="assertive"></div>
+    </div>
+</body>
+<script src="js/game.js"></script>
+</html>
