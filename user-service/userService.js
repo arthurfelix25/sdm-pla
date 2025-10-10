@@ -8,7 +8,7 @@ app.use(express.json());
 
 const MONGO_URI = process.env.MONGO_URI;
 if (!MONGO_URI) {
-    throw new Error('MONGO _URI is not defined');
+    throw new Error('MONGO_URI is not defined');
 } 
 
 mongoose.connect(MONGO_URI, {useNewUrlParser:true, useUnifiedTopology:true})
@@ -18,7 +18,7 @@ mongoose.connect(MONGO_URI, {useNewUrlParser:true, useUnifiedTopology:true})
 const userSchema = new mongoose.Schema({
     name: {type: String, default: ''},
     email: {type: String, required: true, unique: true},
-    cratedAt: {type: Date, default: Date.now}
+    createdAt: {type: Date, default: Date.now}
 });
 
 const User = mongoose.model('User', userSchema);

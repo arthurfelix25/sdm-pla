@@ -7,7 +7,7 @@ app.use(express.json());
 
 const MONGO_URI = process.env.MONGO_URI;
 if (!MONGO_URI) {
-    throw new Error('MONGO _URI is not defined');
+    throw new Error('MONGO_URI is not defined');
 } 
 
 mongoose.connect(MONGO_URI, {useNewUrlParser:true, useUnifiedTopology:true})
@@ -18,19 +18,19 @@ const orderSchema = new mongoose.Schema({
     userId: {type: mongoose.Schema.Types.ObjectId, required: true, ref: 'User'},
     items: {type: [String], default: []},
     total: {type: Number, default: 0},
-    cratedAt: {type: Date, default: Date.now}
+    createdAt: {type: Date, default: Date.now}
 });
 
 const Order = mongoose.model('Order', orderSchema);
 
 app.post('/pedidos', async (req, res) => {
     try{
-        const {userID, items = [], total = 0} = req.body;
-        if (!userID) 
+        const {userId, items = [], total = 0} = req.body;
+        if (!userId) 
             return res.status(400).json({error: 'userId is required'});
 
             const order = new Order({userId, items, total});
-            const saved = await order.save();
+            const saved_id = await order.save();
             console.log(`Pedido criado: ${saved_id} para user ${userId}`);
             res.status(201).json(order);
         }   catch(error) {
@@ -39,9 +39,9 @@ app.post('/pedidos', async (req, res) => {
         }
 });
 
-app.get('pedidos', async(req, res) => {
+app.get('/pedidos', async(req, res) => {
     try{
-        const orders = await Order.find().sort({createAt: -1});
+        const orders = await Order.find().sort({createdAt: -1});
         return res.json(orders)
     } catch (err){
         console.error(err)
