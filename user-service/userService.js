@@ -47,6 +47,17 @@ app.post('/usuarios', async (req, res) => {
 
 });
 
+//Listar usuarios
+app.get('/usuarios', async (req, res) => {
+    try {
+        const users = await User.find().sort({ createdAt: -1 });
+        return res.json(users);
+    } catch (err) {
+        console.error(err);
+        return res.status(500).json({ error: 'Erro ao buscar usuarios'});
+    }
+})
+
 app.listen(3000, () => {
     console.log('Order service running on port 3000');
 });
